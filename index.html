@@ -3,216 +3,318 @@
 <html lang="el">
 <head>
     <meta charset="UTF-8">
-    <title>Art All Day Bar - Menu</title>
+    <title>Μπρίκι Cafe - Κατάλογος</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        :root {
-            --bg: #111317;
-            --card: #1c1f24;
-            --accent: #e3b34d;
-            --text: #f4f4f4;
-            --muted: #aaaaaa;
-            --border: #2a2e35;
-        }
+        :root{
+  --bg:#f3eadc;        /* φόντο έξω από τη σελίδα */
+  --page:#fffaf3;      /* “χαρτί” */
+  --card:#fff1df;      /* κάρτες */
+  --accent:#b4692d;    /* καφέ-πορτοκαλί για τίτλους/τιμές */
+  --text:#1a1a1a;      /* μαύρο */
+  --muted:#575757;     /* σκούρο γκρι */
+  --border:#e3cfb8;    /* απαλό border */
+}
 
-        * {
-            box-sizing: border-box;
-        }
+*{box-sizing:border-box}
 
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                         "Segoe UI", sans-serif;
-            background: #050608;
-            color: var(--text);
-        }
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
 
-        .page {
-            max-width: 900px;
-            margin: 0 auto;
-            background: radial-gradient(circle at top, #222632 0,
-                        #111317 50%, #050608 100%);
-            box-shadow: 0 0 40px rgba(0,0,0,0.7);
-        }
+.page{
+  max-width:900px;
+  margin:24px auto;
+  background:var(--page);                 /* ✅ ΦΕΥΓΕΙ ΤΟ DARK GRADIENT */
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:0 18px 45px rgba(0,0,0,0.12);
+}
 
-        .full-image {
-            width: 100%;
-            display: block;
-        }
+.wrapper{padding:18px 14px 42px}
 
-        .cover {
-            /* Στην εκτύπωση: εξώφυλλο σε δική του σελίδα */
-            page-break-after: always;
-        }
+header{
+  text-align:center;
+  margin-bottom:18px;
+}
 
-        .back {
-            /* Στην εκτύπωση: πίσω σε δική της σελίδα */
-            page-break-before: always;
-        }
+header .logo{
+  max-width:200px;  /* το κρατάω μεγάλο όπως το θες */
+  width:100%;
+  height:auto;
+  margin:0 auto 12px;
+  display:block;
+  opacity:1;
+}
 
-        .wrapper {
-            padding: 16px 12px 40px;
-        }
+header h1{
+  margin:6px 0 4px;
+  font-size:1.7rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--text);
+}
 
-        header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
+header p{
+  margin:0;
+  font-size:.95rem;
+  color:var(--muted);
+}
 
-        header h1 {
-            margin: 8px 0 4px;
-            font-size: 1.8rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
+.note{
+  margin-top:10px;
+  font-size:.82rem;
+  color:var(--muted);
+}
 
-        header p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: var(--muted);
-        }
+.category{
+  background:var(--card);                 /* ✅ ΦΕΥΓΕΙ ΤΟ ΣΚΟΥΡΟ GRADIENT */
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px 14px 8px;
+  margin-bottom:14px;
+  box-shadow:0 10px 22px rgba(0,0,0,0.08);
+  break-inside:avoid;
+  page-break-inside:avoid;
+}
 
-        .note {
-            margin-top: 10px;
-            font-size: 0.8rem;
-            color: var(--muted);
-        }
+.category-title{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:6px;
+}
 
-        .category {
-            background: linear-gradient(145deg, rgba(255,255,255,0.02),
-                        rgba(0,0,0,0.4));
-            border-radius: 18px;
-            padding: 14px 14px 6px;
-            margin-bottom: 14px;
-            border: 1px solid var(--border);
-            box-shadow: 0 14px 30px rgba(0,0,0,0.48);
-        }
+.category-title h2{
+  margin:0;
+  font-size:1.05rem;
+  text-transform:uppercase;
+  letter-spacing:.10em;
+  color:var(--accent);
+}
 
-        .category-title {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 6px;
-        }
+.category-title span{
+  font-size:.72rem;
+  text-transform:uppercase;
+  color:var(--muted);
+}
 
-        .category-title h2 {
-            margin: 0;
-            font-size: 1.05rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent);
-        }
+.item-list{list-style:none;margin:0;padding:0}
 
-        .category-title span {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
+.subcategory {
+    margin: 8px 0 4px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 600;   /* 👈 αυτό είναι το κλειδί */
+}
 
-        .item-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
 
-        .subcategory {
-            margin: 6px 0 2px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--muted);
-        }
+.item{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  padding:7px 0;
+  border-bottom:1px dashed rgba(0,0,0,0.10);   /* ✅ για φωτεινό φόντο */
+  gap:12px;
+}
 
-        .item {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px dashed rgba(255,255,255,0.08);
-            gap: 12px;
-        }
+.item:last-child{border-bottom:none}
 
-        .item:last-child {
-            border-bottom: none;
-        }
+.item-name{font-size:.95rem;color:var(--text)}
 
-        .item-name {
-            font-size: 0.9rem;
-        }
+.item-price{
+  white-space:nowrap;
+  font-size:.95rem;
+  color:var(--accent);
+  font-weight:700;
+}
 
-        .item-price {
-            white-space: nowrap;
-            font-size: 0.9rem;
-            color: var(--accent);
-            font-weight: 600;
-        }
+.item-subname{
+  display:block;
+  font-size:.80rem;
+  color:var(--muted);
+  margin-top:2px;
+}
 
-        .item-subname {
-            display: block;
-            font-size: 0.78rem;
-            color: var(--muted);
-            margin-top: 2px;
-        }
+/* ------ PRINT RULES ------ */
+@page{size:A4;margin:10mm}
 
-        /* ------ PRINT RULES ------ */
-        @page {
-            size: A4;
-            margin: 10mm;
-        }
+@media print{
+  body{background:#ffffff !important}
+  .page{
+    margin:0;
+    border:none;
+    box-shadow:none;
+    background:#ffffff;
+    max-width:100%;
+    border-radius:0;
+  }
+  .wrapper{padding:10mm 8mm 12mm}
+}
 
-        @media print {
-            body {
-                background: #ffffff !important;
-            }
-            .page {
-                box-shadow: none;
-                background: #ffffff;
-                max-width: 100%;
-            }
-            .wrapper {
-                padding: 10mm 8mm 12mm;
-            }
-        }
+/* mobile */
+@media (max-width:600px){
+  .page{margin:0;border-radius:0}
+  .wrapper{padding:14px 10px 28px}
+  header .logo{max-width:170px}
+  header h1{font-size:1.35rem}
+  .item-name,.item-price{font-size:.88rem}
+}
 
-        @media (max-width: 600px) {
-            .wrapper {
-                padding: 12px 10px 28px;
-            }
-            header h1 {
-                font-size: 1.4rem;
-            }
-            .category {
-                padding: 12px 10px 4px;
-            }
-            .item-name {
-                font-size: 0.85rem;
-            }
-            .item-price {
-                font-size: 0.85rem;
-            }
-        }
     </style>
 </head>
 <body>
 <div class="page">
-    <!-- ΕΞΩΦΥΛΛΟ -->
-    <img src="front.png" alt="Art All Day Bar - Menu Cover"
-         class="full-image cover">
-
     <div class="wrapper">
         <header>
-            <h1>ART ALL DAY BAR</h1>
+            <img src="briki.png" class="logo" alt="Μπρίκι Cafe">
+            <h1>Μπρίκι Cafe</h1>
             <p>Κατάλογος</p>
-            <div class="note">
-                Οι τιμές είναι σε ευρώ (€). Ο κατάλογος είναι ενημερωτικός.
-            </div>
+            <div class="note">Οι τιμές είναι σε ευρώ (€). Ο κατάλογος είναι ενημερωτικός.</div>
         </header>
-\n<section class="category">\n<div class="category-title"><h2>ΚΑΦΕΔΕΣ</h2><span>19 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">ESPRESSO</div>  <div class="item-price">3,20 €</div></li>\n<li class="item">  <div class="item-name">ESPRESSO ΔΙΠΛΟ / DOUBLE</div>  <div class="item-price">4,00 €</div></li>\n<li class="item">  <div class="item-name">ESPRESSO RISTRETTO</div>  <div class="item-price">3,20 €</div></li>\n<li class="item">  <div class="item-name">ESPRESSO RISTRETTO ΔΙΠΛΟ / DOUBLE</div>  <div class="item-price">3,70 €</div></li>\n<li class="item">  <div class="item-name">ESPRESSO MACCIATO</div>  <div class="item-price">3,40 €</div></li>\n<li class="item">  <div class="item-name">ESPRESSO MACCIATO ΔΙΠΛΟ / DOUBLE</div>  <div class="item-price">4,20 €</div></li>\n<li class="item">  <div class="item-name">ESPRESSO LUNGO</div>  <div class="item-price">3,20 €</div></li>\n<li class="item">  <div class="item-name">ESPRESSO LUNGO ΔΙΠΛΟΣ / DOUBLE</div>  <div class="item-price">3,90 €</div></li>\n<li class="item">  <div class="item-name">ESPRESSO FREDDO</div>  <div class="item-price">3,70 €</div></li>\n<li class="item">  <div class="item-name">CAPPUCCINO</div>  <div class="item-price">4,20 €</div></li>\n<li class="item">  <div class="item-name">CAPPUCCINO ΔΙΠΛΟ / DOUBLE</div>  <div class="item-price">4,70 €</div></li>\n<li class="item">  <div class="item-name">CAPPUCCINO FREDDO</div>  <div class="item-price">4,20 €</div></li>\n<li class="item">  <div class="item-name">LATTE COFFEE ΖΕΣΤΟ - ΚΡΥΟ / HOT - ICED</div>  <div class="item-price">4,40 €</div></li>\n<li class="item">  <div class="item-name">ΣΤΙΓΜΙΑΙΟΣ ΚΑΦΕΣ ΖΕΣΤΟΣ - ΚΡΥΟΣ / HOT - ICED</div>  <div class="item-price">3,70 €</div></li>\n<li class="item">  <div class="item-name">ΚΑΦΕΣ ΦΙΛΤΡΟΥ / FILTER COFFEE / FLAVOURS</div>  <div class="item-price">3,70 € / 3,90 €</div></li>\n<li class="item">  <div class="item-name">IRISH COFFEE</div>  <div class="item-price">6,00 €</div></li>\n<li class="item">  <div class="item-name">AMERICANO</div>  <div class="item-price">3,80 €</div></li>\n<li class="item">  <div class="item-name">ΕΛΛΗΝΙΚΟΣ ΜΟΝΟΣ / GREEK COFFEE</div>  <div class="item-price">3,00 €</div></li>\n<li class="item">  <div class="item-name">ΕΛΛΗΝΙΚΟΣ ΔΙΠΛΟΣ / GREEK COFFEE DOUBLE</div>  <div class="item-price">4,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΡΟΦΗΜΑΤΑ</h2><span>15 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">ΣΟΚΟΛΑΤΑ / CHOCOLATE</div>  <div class="item-price">4,40 €</div></li>\n<li class="item">  <div class="item-name">ΣΟΚΟΛΑΤΑ ΛΕΥΚΗ / WHITE CHOCOLATE</div>  <div class="item-price">4,70 €</div></li>\n<li class="item">  <div class="item-name">ΣΟΚΟΛΑΤΑ LOVE IT / LOVE IT - BUENO - RED VELVET</div>  <div class="item-price">4,90 €</div></li>\n<li class="item">  <div class="item-name">FREDDOCINO</div>  <div class="item-price">5,50 €</div></li>\n<li class="item">  <div class="item-name">MOCHACCINO<span class="item-subname">Μονή Δόση espresso, Ρόφημα Σοκολάτας , Σαντιγί</span></div>  <div class="item-price">6,00 €</div></li>\n<li class="item">  <div class="item-name">MILKSHAKE</div>  <div class="item-price">5,70 €</div></li>\n<li class="item">  <div class="item-name">MILKSHAKE GIA...GIAMAS<span class="item-subname">PEACH , GREEK PANDESIA, STRAWBERRY, LEMON</span></div>  <div class="item-price">6,20 €</div></li>\n<li class="item">  <div class="item-name">MILKSHAKE BARISTA PRO<span class="item-subname">LOVE IT , BUENO , RED VELVET</span></div>  <div class="item-price">6,50 €</div></li>\n<li class="item">  <div class="item-name">SMART SMOOTHIE<span class="item-subname">TROPICAL HARMONY + ALOE VERA, SUPERFRUITS + GUARANA, WATERMELON + DRAGON FRUITS</span></div>  <div class="item-price">6,00 €</div></li>\n<li class="subcategory">EXTRAS</li>\n<li class="item">  <div class="item-name">ΓΕΥΣΗ (ΚΑΡΑΜΕΛΑ / ΦΟΥΝΤΟΥΚΙ / ΒΑΝΙΛΙΑ / ΦΡΑΟΥΛΑ / ΣΟΚΟΛΑΤΑ)</div>  <div class="item-price">+0,50 €</div></li>\n<li class="item">  <div class="item-name">ΦΥΤΙΚΟ ΓΑΛΑ / SOYA - ALMOND - OAT MILK</div>  <div class="item-price">+0,70 €</div></li>\n<li class="item">  <div class="item-name">ΠΑΓΩΤΟ / ICE CREAM</div>  <div class="item-price">+2,00 €</div></li>\n<li class="item">  <div class="item-name">ΑΛΚΟΟΛ / ALCOHOL</div>  <div class="item-price">+1,00 €</div></li>\n<li class="item">  <div class="item-name">ΣΑΝΤΙΓΙ</div>  <div class="item-price">+0,70 €</div></li>\n<li class="item">  <div class="item-name">ΜΕΛΙ / HONEY STICK</div>  <div class="item-price">+0,50 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΧΥΜΟΙ</h2><span>5 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">GIA...GIAMAS (διάφορες γεύσεις)<span class="item-subname">LEMON, STRAWBERRY, PEACH, GREEN APPLE & POMEGRANATE, PANDESIA, MANDARIN, CHERRY</span></div>  <div class="item-price">5,50 €</div></li>\n<li class="item">  <div class="item-name">SMART JUICES<span class="item-subname">TROPICAL HARMONY + ALOE VERA, SUPERFRUITS + GUARANA, WATERMELON + DRAGON FRUITS</span></div>  <div class="item-price">5,70 €</div></li>\n<li class="item">  <div class="item-name">ΑΜΙΤΑ 330ml</div>  <div class="item-price">4,00 €</div></li>\n<li class="item">  <div class="item-name">ΦΥΣΙΚΟΣ ΠΟΡΤΟΚΑΛΙ / PURE ORANGE JUICE</div>  <div class="item-price">4,80 €</div></li>\n<li class="item">  <div class="item-name">ΦΥΣΙΚΟΣ ΑΝΑΜΕΙΚΤΟΣ / NATURAL MIXED JUICE</div>  <div class="item-price">5,50 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΑΝΑΨΥΚΤΙΚΑ</h2><span>11 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">COCA COLA / ZERO 330ml</div>  <div class="item-price">3,50 €</div></li>\n<li class="item">  <div class="item-name">FANTA ΠΟΡΤΟΚΑΛΑΔΑ ΜΕ ΑΝΘΡΑΚΙΚΟ</div>  <div class="item-price">3,50 €</div></li>\n<li class="item">  <div class="item-name">FANTA ΠΟΡΤΟΚΑΛΑΔΑ ΧΩΡΙΣ ΑΝΘΡΑΚΙΚΟ</div>  <div class="item-price">3,50 €</div></li>\n<li class="item">  <div class="item-name">SPRITE 330ml</div>  <div class="item-price">3,50 €</div></li>\n<li class="item">  <div class="item-name">ΤΣΑΙ ΖΕΣΤΟ - ΚΡΥΟ / TEA HOT - ICED</div>  <div class="item-price">4,20 €</div></li>\n<li class="item">  <div class="item-name">ΣΟΥΡΩΤΗ / SOUROTIS CARBONATED WATER</div>  <div class="item-price">3,50 €</div></li>\n<li class="item">  <div class="item-name">TONIC</div>  <div class="item-price">3,50 €</div></li>\n<li class="item">  <div class="item-name">ΣΟΔΑ / SODA WATER</div>  <div class="item-price">3,50 €</div></li>\n<li class="item">  <div class="item-name">ENERGY DRINK</div>  <div class="item-price">5,50 €</div></li>\n<li class="item">  <div class="item-name">SCHWEPPES<span class="item-subname">ORANGE, PINKGRAPEFRUIT SODA, LEMONADE</span></div>  <div class="item-price">3,80 €</div></li>\n<li class="item">  <div class="item-name">ΓΡΑΝΙΤΑ / GRANITA<span class="item-subname">LEMON, STRAWBERRY, PEACH, GREEN APPLE & POMEGRANATE, PANDESIA, MANDARIN, CHERRY</span></div>  <div class="item-price">5,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΜΠΥΡΕΣ</h2><span>11 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">HEINEKEN DRAUGHT 400ml</div>  <div class="item-price">5,00 €</div></li>\n<li class="item">  <div class="item-name">STELLA ARTOIS 0.0% 330ml</div>  <div class="item-price">6,00 €</div></li>\n<li class="item">  <div class="item-name">STELLA ARTOIS 330ml</div>  <div class="item-price">6,00 €</div></li>\n<li class="item">  <div class="item-name">CORONA 330ml</div>  <div class="item-price">6,00 €</div></li>\n<li class="item">  <div class="item-name">ΑΛΦΑ 330ml</div>  <div class="item-price">5,00 €</div></li>\n<li class="item">  <div class="item-name">FISCHER 330ml</div>  <div class="item-price">5,00 €</div></li>\n<li class="item">  <div class="item-name">ΜΑΜΟΣ 330ml</div>  <div class="item-price">5,00 €</div></li>\n<li class="item">  <div class="item-name">FIX 330ml</div>  <div class="item-price">5,00 €</div></li>\n<li class="item">  <div class="item-name">FIX DARK 330ml</div>  <div class="item-price">6,00 €</div></li>\n<li class="item">  <div class="item-name">ERDINGER WEISS 330ml</div>  <div class="item-price">6,50 €</div></li>\n<li class="item">  <div class="item-name">MCFARLAND 330ml</div>  <div class="item-price">6,50 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΚΡΑΣΙΑ</h2><span>6 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">QUEEN OF HEARTS / ΝΤΑΜΑ ΚΟΥΠΑ ΛΕΥΚΟ ΞΗΡΟ</div>  <div class="item-price">40,00 €</div></li>\n<li class="item">  <div class="item-name">KING OF HEARTS / ΡΗΓΑΣ ΚΟΥΠΑ ΕΡΥΘΡΟΣ ΞΗΡΟΣ</div>  <div class="item-price">40,00 €</div></li>\n<li class="item">  <div class="item-name">ΑΜΠΕΛΟΥ ΝΕΚΤΑΡ ΕΡΥΘΡΟΣ ΞΗΡΟΣ</div>  <div class="item-price">35,00 €</div></li>\n<li class="item">  <div class="item-name">ΑΜΠΕΛΟΥ ΝΕΚΤΑΡ ΛΕΥΚΟΣ ΞΗΡΟΣ</div>  <div class="item-price">35,00 €</div></li>\n<li class="item">  <div class="item-name">ΧΑΤΖΗΜΙΧΑΛΗ ΕΡΥΘΡΟΣ ΞΗΡΟΣ</div>  <div class="item-price">40,00 €</div></li>\n<li class="item">  <div class="item-name">MOSCATO D’ASTI (ΦΙΑΛΗ)</div>  <div class="item-price">50,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΑΛΚΟΟΛ</h2><span>19 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">ΠΟΤΗΡΙ ΚΡΑΣΙ / GLASS OF WINE 180ml<span class="item-subname">Λευκό Ξηρό, Λευκό Ημίγλυκο, Κόκκινο Ξηρό , Κόκκινο Ημίγλυκο</span></div>  <div class="item-price">6,00 €</div></li>\n<li class="item">  <div class="item-name">ΣΑΓΚΡΙΑ</div>  <div class="item-price">7,00 €</div></li>\n<li class="item">  <div class="item-name">APEROL SPRITZ</div>  <div class="item-price">8,50 €</div></li>\n<li class="item">  <div class="item-name">MOSCATO D’ASTI (ΠΟΤΗΡΙ)</div>  <div class="item-price">7,00 €</div></li>\n<li class="item">  <div class="item-name">ΠΟΤΟ ΑΠΛΟ / SIMPLE DRINK</div>  <div class="item-price">8,00 €</div></li>\n<li class="item">  <div class="item-name">ΠΟΤΟ ΣΠΕΣΙΑΛ / SPECIAL DRINK</div>  <div class="item-price">9,00 €</div></li>\n<li class="item">  <div class="item-name">ΠΟΤΟ PREMIUM / PREMIUM DRINK</div>  <div class="item-price">12,00 €</div></li>\n<li class="item">  <div class="item-name">ΠΟΤΟ EXTRA PREMIUM / EXTRA PREMIUM DRINK</div>  <div class="item-price">15,00 €</div></li>\n<li class="item">  <div class="item-name">ΦΙΑΛΗ ΑΠΛΗ / SIMPLE BOTTLE</div>  <div class="item-price">80,00 €</div></li>\n<li class="item">  <div class="item-name">ΦΙΑΛΗ ΣΠΕΣΙΑΛ / SPECIAL BOTTLE</div>  <div class="item-price">90,00 €</div></li>\n<li class="item">  <div class="item-name">ΦΙΑΛΗ PREMIUM / PREMIUM BOTTLE</div>  <div class="item-price">120,00 €</div></li>\n<li class="item">  <div class="item-name">ΦΙΑΛΗ EXTRA PREMIUM / EXTRA PREMIUM BOTTLE</div>  <div class="item-price">150,00 €</div></li>\n<li class="item">  <div class="item-name">ΣΦΗΝΑΚΙΑ / SHOTS</div>  <div class="item-price">4,00 €</div></li>\n<li class="item">  <div class="item-name">ΣΦΗΝΑΚΙΑ ΣΠΕΣΙΑΛ / SPECIAL SHOTS</div>  <div class="item-price">5,00 €</div></li>\n<li class="item">  <div class="item-name">ΥΠΟΒΡΥΧΙΟ</div>  <div class="item-price">5,00 €</div></li>\n<li class="item">  <div class="item-name">ΟΥΖΟ / ΤΣΙΠΟΥΡΟ ΠΟΤΗΡΙ</div>  <div class="item-price">3,50 €</div></li>\n<li class="item">  <div class="item-name">ΟΥΖΟ / ΤΣΙΠΟΥΡΟ ΠΟΤΗΡΙ + ΜΕΖΕ</div>  <div class="item-price">6,50 €</div></li>\n<li class="item">  <div class="item-name">ΟΥΖΟ / ΤΣΙΠΟΥΡΟ ΚΑΡΑΦΑΚΙ 100ml</div>  <div class="item-price">6,50 €</div></li>\n<li class="item">  <div class="item-name">ΟΥΖΟ / ΤΣΙΠΟΥΡΟ ΚΑΡΑΦΑΚΙ 100ml + ΜΕΖΕ</div>  <div class="item-price">9,50 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>BRUNCH</h2><span>3 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">ΟΜΕΛΕΤΑ ΑΠΛΗ / SIMPLE OMELETTE<span class="item-subname">3 ΑΥΓΑ / 3 EGGS</span></div>  <div class="item-price">8,50 €</div></li>\n<li class="item">  <div class="item-name">ART ΟΜΕΛΕΤΑ / ART OMELETTE<span class="item-subname">ΟΜΕΛΕΤΑ, ΠΙΠΕΡΙΕΣ, ΜΠΕΙΚΟΝ, ΚΑΡΕ ΝΤΟΜΑΤΑΣ / OMELETTE, PEPPERS, BACON, TOMATO FRAME</span></div>  <div class="item-price">12,00 €</div></li>\n<li class="item">  <div class="item-name">GREEK BREAKFAST<span class="item-subname">(2 ΑΥΓΑ, 4 ΛΟΥΚΑΝΙΚΑΚΙΑ, 1 ΠΙΤΑ, ΠΑΤΑΤΕΣ* & ΣΑΛΑΤΑ ΝΤΟΜΑΤΑ, ΑΓΓΟΥΡΙ, ΦΕΤΑ / 2 EGGS, 4 MINI SAUSAGES, FRENCH FRIES & SALAD WITH TOMATO, CUCUMBER, FETA CHEESE)</span></div>  <div class="item-price">13,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΣΑΛΑΤΕΣ</h2><span>3 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">ΧΩΡΙΑΤΙΚΗ / GREEK SALAD</div>  <div class="item-price">9,50 €</div></li>\n<li class="item">  <div class="item-name">CHEF</div>  <div class="item-price">10,00 €</div></li>\n<li class="item">  <div class="item-name">CAESAR'S</div>  <div class="item-price">12,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>SNACKS</h2><span>6 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">ΤΟΣΤ ΓΑΛΟΠΟΥΛΑ / TURKEY TOAST</div>  <div class="item-price">3,70 €</div></li>\n<li class="item">  <div class="item-name">ΤΟΣΤ ΖΑΜΠΟΝ / HAM TOAST</div>  <div class="item-price">3,70 €</div></li>\n<li class="subcategory">EXTRAS</li>\n<li class="item">  <div class="item-name">ΝΤΟΜΑΤΑ / TOMATO</div>  <div class="item-price">0,50 €</div></li>\n<li class="item">  <div class="item-name">ΑΥΓΟ / EGG</div>  <div class="item-price">1,00 €</div></li>\n<li class="item">  <div class="item-name">BACON</div>  <div class="item-price">0,70 €</div></li>\n<li class="item">  <div class="item-name">SAUCES</div>  <div class="item-price">0,70 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΤΟΡΤΙΓΙΑ</h2><span>3 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">ΤΟΡΤΙΓΙΑ ΓΑΛΟΠΟΥΛΑ / TURKEY TORTILLA</div>  <div class="item-price">5,50 €</div></li>\n<li class="item">  <div class="item-name">ΤΟΡΤΙΓΙΑ ΦΙΛΕΤΟ ΚΟΤΟΠΟΥΛΟ / CHICKEN FILLET TORTILLA</div>  <div class="item-price">6,50 €</div></li>\n<li class="item">  <div class="item-name">ΤΟΡΤΙΓΙΑ ΤΟΝΟΣ / TUNA FISH TORTILLA</div>  <div class="item-price">6,50 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>CLUB SANDWICHES</h2><span>3 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">CLUB SANDWICH ΓΑΛΟΠΟΥΛΑ / TURKEY CLUB</div>  <div class="item-price">9,50 €</div></li>\n<li class="item">  <div class="item-name">CLUB SANDWICH ΚΟΤΟΠΟΥΛΟ / CHICKEN CLUB</div>  <div class="item-price">11,00 €</div></li>\n<li class="item">  <div class="item-name">CLUB SANDWICH ART</div>  <div class="item-price">12,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>BURGERS</h2><span>3 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">CHEESEBURGER</div>  <div class="item-price">9,50 €</div></li>\n<li class="item">  <div class="item-name">BURBEQUE BURGER</div>  <div class="item-price">10,50 €</div></li>\n<li class="item">  <div class="item-name">ART BURGER</div>  <div class="item-price">12,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>PIZZA</h2><span>3 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">PIZZA MARGARITA</div>  <div class="item-price">11,00 €</div></li>\n<li class="item">  <div class="item-name">PIZZA SPECIAL</div>  <div class="item-price">12,00 €</div></li>\n<li class="item">  <div class="item-name">PIZZA AM“ART”IA</div>  <div class="item-price">13,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΠΟΙΚΙΛΙΕΣ</h2><span>6 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">ΜΕΡΙΔΑ ΛΟΥΚΑΝΙΚΟ / SAUSAGE</div>  <div class="item-price">11,00 €</div></li>\n<li class="item">  <div class="item-name">ΜΕΡΙΔΑ ΜΠΙΦΤΕΚΙ / BURGER</div>  <div class="item-price">11,00 €</div></li>\n<li class="item">  <div class="item-name">ΠΛΑΤΟ ΤΥΡΙΩΝ / CHEESE PLATTER</div>  <div class="item-price">15,00 €</div></li>\n<li class="item">  <div class="item-name">ΠΛΑΤΟ ΑΛΛΑΝΤΙΚΩΝ / CHARCUTERIE PLATTER</div>  <div class="item-price">16,00 €</div></li>\n<li class="item">  <div class="item-name">MIX PLATTER</div>  <div class="item-price">25,00 €</div></li>\n<li class="item">  <div class="item-name">ΠΟΙΚΙΛΙΑ ΚΡΕΑΤΙΚΩΝ / VARIETIES OF MEAT</div>  <div class="item-price">30,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>LIGHT & HEALTHY</h2><span>3 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">TUTTI FRUTTI SALAD</div>  <div class="item-price">8,00 €</div></li>\n<li class="item">  <div class="item-name">TUTTI FRUTTI SPECIAL SALAD</div>  <div class="item-price">9,00 €</div></li>\n<li class="item">  <div class="item-name">MUESLI</div>  <div class="item-price">10,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΓΛΥΚΑ</h2><span>3 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">ΜΗΛΟΠΙΤΑ / APPLE PIE</div>  <div class="item-price">8,00 €</div></li>\n<li class="item">  <div class="item-name">ΣΟΚΟΛΑΤΕΝΙΑ ΚΑΡΥΔΟΠΙΤΑ / CHOCOLATE WALNUT PIE</div>  <div class="item-price">8,00 €</div></li>\n<li class="item">  <div class="item-name">ΠΑΓΩΤΟ / ICE CREAM</div>  <div class="item-price">3,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>ΒΑΦΛΕΣ</h2><span>7 προϊόντα</span></div>\n<ul class="item-list">\n<li class="item">  <div class="item-name">ΠΡΑΛΙΝΑ, ΣΑΝΤΙΓΙ, ΣΙΡΟΠΙ</div>  <div class="item-price">7,50 €</div></li>\n<li class="item">  <div class="item-name">ΠΡΑΛΙΝΑ, ΤΡΙΜ. ΜΠΙΣΚΟΤΟ, ΣΑΝΤΙΓΙ, ΣΙΡΟΠΙ</div>  <div class="item-price">8,50 €</div></li>\n<li class="item">  <div class="item-name">ΠΡΑΛΙΝΑ, ΦΡΕΣΚΙΑ ΜΠΑΝΑΝΑ Η ΦΡΑΟΥΛΑ, ΣΑΝΤΙΓΙ, ΣΙΡΟΠΙ</div>  <div class="item-price">9,00 €</div></li>\n<li class="item">  <div class="item-name">ΠΡΑΛΙΝΑ, ΤΡΙΜ. ΜΠΙΣΚΟΤΟ, ΦΡΕΣΚΙΑ ΜΠΑΝΑΝΑ Η ΦΡΑΟΥΛΑ, ΣΑΝΤΙΓΙ, ΣΙΡΟΠΙ</div>  <div class="item-price">9,50 €</div></li>\n<li class="item">  <div class="item-name">ΠΑΓΩΤΟ, ΠΡΑΛΙΝΑ, ΤΡΙΜ. ΜΠΙΣΚΟΤΟ, ΣΑΝΤΙΓΙ, ΣΙΡΟΠΙ</div>  <div class="item-price">11,50 €</div></li>\n<li class="item">  <div class="item-name">ΠΑΓΩΤΟ, ΠΡΑΛΙΝΑ, ΦΡΕΣΚΙΑ ΜΠΑΝΑΝΑ Η ΦΡΑΟΥΛΑ, ΣΑΝΤΙΓΙ, ΣΙΡΟΠΙ</div>  <div class="item-price">12,50 €</div></li>\n<li class="item">  <div class="item-name">ΠΑΓΩΤΟ, ΠΡΑΛΙΝΑ, ΤΡΙΜ. ΜΠΙΣΚΟΤΟ, ΦΡΕΣΚΙΑ ΜΠΑΝΑΝΑ Η ΦΡΑΟΥΛΑ, ΣΑΝΤΙΓΙ, ΣΙΡΟΠΙ</div>  <div class="item-price">13,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>PANCAKES </h2><span>6 προϊόντα</span></div>\n<ul class="item-list">\n<li class="subcategory">SWEET</li>\n<li class="item">  <div class="item-name">ΠΡΑΛΙΝΑ, ΜΠΙΣΚΟΤΟ, ΣΑΝΤΙΓΙ</div>  <div class="item-price">6,50 €</div></li>\n<li class="item">  <div class="item-name">ΜΕΛΙ / ΣΙΡΟΠΙ ΣΦΕΝΔΑΜΟΥ, ΦΡΟΥΤΑ</div>  <div class="item-price">7,50 €</div></li>\n<li class="subcategory">EXTRAS</li>\n<li class="item">  <div class="item-name">ΣΙΡΟΠΙ / SYRUP</div>  <div class="item-price">+0,70 €</div></li>\n<li class="subcategory">SAVORY</li>\n<li class="item">  <div class="item-name">ΤΥΡΙ, ΖΑΜΠΟΝ/ΓΑΛΟΠΟΥΛΑ, ΝΤΟΜΑΤΑ, ΜΑΡΟΥΛΙ</div>  <div class="item-price">7,00 €</div></li>\n<li class="item">  <div class="item-name">ΤΥΡΙ, ΖΑΜΠΟΝ, ΜΠΕΙΚΟΝ, ΝΤΟΜΑΤΑ, BBQ SAUCE, ΤΗΓΑΝΗΤΟ ΑΥΓΟ</div>  <div class="item-price">9,00 €</div></li>\n<li class="item">  <div class="item-name">ΤΥΡΙ, ΚΟΤΟΠΟΥΛΟ*, ΜΑΡΟΥΛΙ, ΦΛΕΙΚΣ ΠΑΡΜΕΖΑΝΑΣ, ΜΠΕΙΚΟΝ, CAESAR SAUCE</div>  <div class="item-price">12,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>PANCAKES</h2><span>2 προϊόντα</span></div>\n<ul class="item-list">\n<li class="subcategory">EXTRAS</li>\n<li class="item">  <div class="item-name">ΠΑΓΩΤΟ / ICE CREAM</div>  <div class="item-price">+3,00 €</div></li>\n<li class="item">  <div class="item-name">ΜΕΛΙ / ΣΙΡΟΠΙ ΣΦΕΝΔΑΜΟΥ</div>  <div class="item-price">+1,00 €</div></li>\n</ul>\n</section>\n<section class="category">\n<div class="category-title"><h2>COCKTAILS </h2><span>10 προϊόντα</span></div>\n<ul class="item-list">\n<li class="subcategory">CLASSICS</li>\n<li class="item">  <div class="item-name">Mojito</div>  <div class="item-price">10,00 €</div></li>\n<li class="item">  <div class="item-name">Margarita</div>  <div class="item-price">10,00 €</div></li>\n<li class="item">  <div class="item-name">Caipiroska</div>  <div class="item-price">9,00 €</div></li>\n<li class="item">  <div class="item-name">Caipirinha</div>  <div class="item-price">9,00 €</div></li>\n<li class="item">  <div class="item-name">Cosmopolitan</div>  <div class="item-price">10,00 €</div></li>\n<li class="item">  <div class="item-name">Frozen Daiquiri Strawberry</div>  <div class="item-price">10,00 €</div></li>\n<li class="subcategory">SIGNATURES</li>\n<li class="item">  <div class="item-name">The Extra Mojito</div>  <div class="item-price">12,00 €</div></li>\n<li class="item">  <div class="item-name">Strawberry Margarita</div>  <div class="item-price">12,00 €</div></li>\n<li class="item">  <div class="item-name">Roza Caramel</div>  <div class="item-price">12,00 €</div></li>\n<li class="item">  <div class="item-name">Pink Panther</div>  <div class="item-price">11,00 €</div></li>\n</ul>\n</section>\n
-    </div> <!-- /wrapper -->
 
-    <!-- ΠΙΣΩ ΣΕΛΙΔΑ -->
-    <img src="back.png" alt="Art All Day Bar - Info"
-         class="full-image back">
-</div> <!-- /page -->
+<section class="category">
+<div class="category-title"><h2>ΠΟΤΑ</h2><span></span></div>
+<ul class="item-list">
+<li class="subcategory">ΚΑΦΕΣ</li>
+<li class="item">  <div class="item-name">Espresso μονός</div>  <div class="item-price">2.0</div></li>
+<li class="item">  <div class="item-name">Espresso διπλός</div>  <div class="item-price">3.5</div></li>
+<li class="item">  <div class="item-name">Espresso διπλός macchiato</div>  <div class="item-price">3.5</div></li>
+<li class="item">  <div class="item-name">Freddo Espresso</div>  <div class="item-price">3.5</div></li>
+<li class="item">  <div class="item-name">Freddo Espresso XL</div>  <div class="item-price">5.0</div></li>
+<li class="item">  <div class="item-name">Cappuccino μονός</div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">Cappuccino διπλός</div>  <div class="item-price">3.8</div></li>
+<li class="item">  <div class="item-name">Freddo Cappuccino</div>  <div class="item-price">3.5</div></li>
+<li class="item">  <div class="item-name">Freddo Cappuccino XL</div>  <div class="item-price">5.0</div></li>
+<li class="item">  <div class="item-name">Americano μονός</div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">Americano διπλός</div>  <div class="item-price">3.5</div></li>
+<li class="item">  <div class="item-name">Iced Latte</div>  <div class="item-price">3.5</div></li>
+<li class="item">  <div class="item-name">Latte</div>  <div class="item-price">3.5</div></li>
+<li class="item">  <div class="item-name">Ελληνικός διπλός</div>  <div class="item-price">3.2</div></li>
+<li class="item">  <div class="item-name">Frappé</div>  <div class="item-price">3.2</div></li>
+<li class="item">  <div class="item-name">Ζεστός Nescafe</div>  <div class="item-price">3.2</div></li>
+<li class="item">  <div class="item-name">Καφές φίλτρου</div>  <div class="item-price">3.2</div></li>
+<li class="subcategory">ΡΟΦΗΜΑΤΑ</li>
+<li class="item">  <div class="item-name">Σοκολάτα κρύα</div>  <div class="item-price">3.8</div></li>
+<li class="item">  <div class="item-name">Σοκολάτα ζεστή</div>  <div class="item-price">3.8</div></li>
+<li class="item">  <div class="item-name">Σοκολάτα λευκή</div>  <div class="item-price">3.8</div></li>
+<li class="item">  <div class="item-name">Lipton Ice Tea 350ml<span class="item-subname">Λεμόνι, Ροδάκινο</span></div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">Σοκολάτα Choco n’ Oreo</div>  <div class="item-price">4.5</div></li>
+<li class="item">  <div class="item-name">Τσάι<span class="item-subname">Δείτε κάτω στα Teabox</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Χαμομήλι</div>  <div class="item-price">2.8</div></li>
+<li class="subcategory">ΑΝΑΨΥΚΤΙΚΑ</li>
+<li class="item">  <div class="item-name">Pepsi Cola<span class="item-subname">Regular, Τwist, Μax, Μax Lime</span></div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">Πορτοκαλάδα</div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">Λεμονίτα</div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">7UP</div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">Σόδα</div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">Τόνικ</div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">Red Bull</div>  <div class="item-price">4.5</div></li>
+<li class="item">  <div class="item-name">Νερό</div>  <div class="item-price">0.5</div></li>
+<li class="item">  <div class="item-name">Ανθρακούχο νερό</div>  <div class="item-price">3.5</div></li>
+<li class="subcategory">ΧΥΜΟΙ</li>
+<li class="item">  <div class="item-name">Φυσικός χυμός πορτοκάλι</div>  <div class="item-price">3.8</div></li>
+<li class="subcategory">SMOOTHIES</li>
+<li class="item">  <div class="item-name">Red Rum</div>  <div class="item-price">5.0</div></li>
+<li class="item">  <div class="item-name">Pinky Blenders</div>  <div class="item-price">5.0</div></li>
+<li class="item">  <div class="item-name">Ginger Purple</div>  <div class="item-price">5.0</div></li>
+<li class="subcategory">ΑΛΚΟΟΛ</li>
+<li class="item">  <div class="item-name">Μπύρα</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Κρασί ποτήρι</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Απλό ποτό</div>  <div class="item-price">6.0</div></li>
+<li class="item">  <div class="item-name">Special ποτό</div>  <div class="item-price">7.5</div></li>
+<li class="item">  <div class="item-name">Ούζο ποτήρι</div>  <div class="item-price">3.5</div></li>
+<li class="item">  <div class="item-name">Σφηνάκι</div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">Cocktail Μπρίκι</div>  <div class="item-price">8.0</div></li>
+</ul>
+</section>
+<section class="category">
+<div class="category-title"><h2>YAMAS</h2><span></span></div>
+<ul class="item-list">
+<li class="item">  <div class="item-name">Blueberry</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Mint</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Mango</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Strawberry</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Peach</div>  <div class="item-price">4.0</div></li>
+</ul>
+</section>
+<section class="category">
+<div class="category-title"><h2>HOTLY</h2><span></span></div>
+<ul class="item-list">
+<li class="item">  <div class="item-name">Mango with passion fruit</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Red peach with passion fruit</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Pineapple with yuzu</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Morello cherry with spices</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Raspberry with spearmint</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Blackcurrant with basil</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Strawberry with bergamot</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Hippophae with ginger</div>  <div class="item-price">4.0</div></li>
+</ul>
+</section>
+<section class="category">
+<div class="category-title"><h2>CICADA</h2><span></span></div>
+<ul class="item-list">
+<li class="item">  <div class="item-name">Λάιμ</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Φράουλα με λεμόνι</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Μανταρίνι</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Ροδάκινο</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Ανανάς με μάνγκο</div>  <div class="item-price">4.0</div></li>
+<li class="item">  <div class="item-name">Κόκκινα φρούτα</div>  <div class="item-price">4.0</div></li>
+</ul>
+</section>
+<section class="category">
+<div class="category-title"><h2>Teabox</h2><span></span></div>
+<ul class="item-list">
+<li class="item">  <div class="item-name">Το Δάκρυ του Ολύμπου<span class="item-subname">Τσάι του βουνού</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Η Πράσινη Κοιλάδα<span class="item-subname">Πράσινο τσάι</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Ο Ήρεμος Ήλιος<span class="item-subname">Χαμομήλι</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Πρωινό στο Λονδίνο<span class="item-subname">Μαύρο τσάι</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Καθημερινή Αποτοξίνωση<span class="item-subname">Πράσινο τσάι με μάτσα</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Η Απαγορευμένη Ουσία<span class="item-subname">Κάνναβη και πράσινο τσάι</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Παραμυθένια Γαία<span class="item-subname">Rooibos με καραμέλα</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Ο Φρέσκος Αέρας<span class="item-subname">Μέντα και ευκάλυπτος</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Το Κίτρινο Δέντρο<span class="item-subname">Πράσινο τσάι με λεμόνι</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Δρόμος της Ανατολής<span class="item-subname">Πράσινο τσάι με κανέλα και τζίντζερ</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Ο Θησαυρός της Υγείας<span class="item-subname">Ρόδι, βύσσινο και αμύγδαλα</span></div>  <div class="item-price">2.8</div></li>
+<li class="item">  <div class="item-name">Οι Καρποί των Ίνκας<span class="item-subname">Φρούτα του δάσους</span></div>  <div class="item-price">2.8</div></li>
+</ul>
+</section>
+<section class="category">
+<div class="category-title"><h2>ΦΑΓΗΤΟ</h2><span></span></div>
+<ul class="item-list">
+<li class="subcategory">Τοστ</li>
+<li class="item">  <div class="item-name">Τοστ απλό<span class="item-subname">τυρί, γαλοπούλα/ζαμπόν</span></div>  <div class="item-price">3.0</div></li>
+<li class="item">  <div class="item-name">Τοστ Special<span class="item-subname">τυρί, γαλοπούλα/ζαμπόν, ντομάτα, μαρούλι, μπέικον, μαγιονέζα</span></div>  <div class="item-price">4.0</div></li>
+<li class="subcategory">Τορτίγιες</li>
+<li class="item">  <div class="item-name">Τορτίγια κοτόπουλο</div>  <div class="item-price">5.0</div></li>
+<li class="subcategory">Club Sandwich</li>
+<li class="item">  <div class="item-name">Club sandwich ζαμπόν/γαλοπούλα</div>  <div class="item-price">5.0</div></li>
+<li class="item">  <div class="item-name">Club sandwich κοτόπουλο</div>  <div class="item-price">5.5</div></li>
+<li class="subcategory">Πίτες</li>
+<li class="item">  <div class="item-name">Αραβική πίτα κοτόπουλο φιλέτο</div>  <div class="item-price">4.5</div></li>
+<li class="item">  <div class="item-name">Αραβική πίτα γαλοπούλα καπνιστή</div>  <div class="item-price">4.5</div></li>
+<li class="subcategory">Μπαγκέτες</li>
+<li class="item">  <div class="item-name">Μπαγκέτα λευκή με γαλοπούλα καπνιστή</div>  <div class="item-price">4.5</div></li>
+<li class="item">  <div class="item-name">Μπαγκέτα βιαννέζικη</div>  <div class="item-price">4.5</div></li>
+<li class="item">  <div class="item-name">Τσιαπάτα με κοτομπουκιά πανέ</div>  <div class="item-price">5.0</div></li>
+<li class="subcategory">Κυρίως Πιάτα</li>
+<li class="item">  <div class="item-name">Χοιρινή τηγανιά με καραμελωμένα κρεμμύδια<span class="item-subname">Σερβίρεται με πατάτες τηγανιτές</span></div>  <div class="item-price">7.5</div></li>
+<li class="item">  <div class="item-name">Chicken Stripes<span class="item-subname">Σερβίρεται με πατάτες τηγανιτές</span></div>  <div class="item-price">6.8</div></li>
+<li class="subcategory">Σαλάτες</li>
+<li class="item">  <div class="item-name">Caesar’s</div>  <div class="item-price">6.0</div></li>
+<li class="subcategory">Γλυκά</li>
+<li class="item">  <div class="item-name">Cheesecake</div>  <div class="item-price">4.5</div></li>
+<li class="item">  <div class="item-name">Προφιτερόλ</div>  <div class="item-price">4.5</div></li>
+<li class="item">  <div class="item-name">Εκμέκ</div>  <div class="item-price">4.5</div></li>
+</ul>
+</section>
+
+    </div>
+</div>
 </body>
 </html>
